@@ -8,35 +8,6 @@ import CreateScreen from '../screens/CreateScreen';
 
 const Stack = createStackNavigator();
 
-const IndexStack = () => {
-  return (
-    <Stack.Navigator>
-      <Stack.Screen
-        name="Index"
-        component={IndexScreen}
-        options={{headerShown: false}}
-      />
-      <Stack.Screen name="Details" component={DetailScreen} />
-    </Stack.Navigator>
-  );
-};
-
-const DetailStack = () => {
-  return (
-    <Stack.Navigator>
-      <Stack.Screen name="Create" component={CreateScreen} />
-    </Stack.Navigator>
-  );
-};
-
-const CreateStack = () => {
-  return (
-    <Stack.Navigator>
-      <Stack.Screen name="Create" component={CreateScreen} />
-    </Stack.Navigator>
-  );
-};
-
 const headerStyle = {
   headerStyle: {
     backgroundColor: '#ff9800',

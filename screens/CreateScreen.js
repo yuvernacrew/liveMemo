@@ -1,10 +1,15 @@
 import React from 'react';
-import {StyleSheet, FlatList, SafeAreaView, Text} from 'react-native';
+import {StyleSheet, SafeAreaView} from 'react-native';
+import TextForm from '../components/form/TextForm';
 
-export default function App() {
+export default function CreateScreen() {
   return (
     <SafeAreaView style={styles.container}>
-      <Text>くりえいと</Text>
+      <TextForm label="ライブタイトル" />
+      <TextForm label="アーティスト" />
+      <TextForm label="場所" />
+      <TextForm label="日程" />
+      <TextForm label="コメント" />
     </SafeAreaView>
   );
 }
