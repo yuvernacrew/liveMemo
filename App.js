@@ -1,21 +1,25 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import {StyleSheet, FlatList, SafeAreaView} from 'react-native';
+import LiveList from './components/liveList';
+// TODO: 仮のデータをimport
+import data from './assets/data';
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <SafeAreaView style={styles.container}>
+      <FlatList
+        data={data}
+        renderItem={({item}) => (
+          <LiveList title={item.title} artist={item.artist} date={item.date} />
+        )}
+        keyExtractor={(item, index) => index.toString()}></FlatList>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    flex: 1,
   },
 });
