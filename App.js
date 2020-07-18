@@ -1,20 +1,9 @@
 import React from 'react';
 import {StyleSheet, FlatList, SafeAreaView} from 'react-native';
-import LiveList from './components/liveList';
-// TODO: 仮のデータをimport
-import data from './assets/data';
+import AppNavigator from './navigation/AppNavigator';
 
 export default function App() {
-  return (
-    <SafeAreaView style={styles.container}>
-      <FlatList
-        data={data}
-        renderItem={({item}) => (
-          <LiveList title={item.title} artist={item.artist} date={item.date} />
-        )}
-        keyExtractor={(item, index) => index.toString()}></FlatList>
-    </SafeAreaView>
-  );
+  return <AppNavigator />;
 }
 
 const styles = StyleSheet.create({
