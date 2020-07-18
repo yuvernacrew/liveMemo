@@ -39,7 +39,7 @@ const CreateStack = () => {
 
 const headerStyle = {
   headerStyle: {
-    backgroundColor: '#f4511e',
+    backgroundColor: '#f57c00',
   },
   headerTintColor: '#fff',
   headerTitleStyle: {

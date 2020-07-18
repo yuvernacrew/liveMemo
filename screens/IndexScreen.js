@@ -1,6 +1,6 @@
 import React from 'react';
 import {StyleSheet, FlatList, SafeAreaView} from 'react-native';
-import LiveList from '../components/liveList';
+import LiveList from '../components/LiveList';
 // TODO: 仮のデータをimport
 import data from '../assets/data';
 
