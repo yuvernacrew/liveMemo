@@ -39,7 +39,7 @@ const CreateStack = () => {
 
 const headerStyle = {
   headerStyle: {
-    backgroundColor: '#f57c00',
+    backgroundColor: '#ff9800',
   },
   headerTintColor: '#fff',
   headerTitleStyle: {
@@ -60,6 +60,11 @@ export default AppNavigaotor = () => {
           name="Detail"
           component={DetailScreen}
           options={{title: 'ライブ詳細', ...headerStyle}}
+        />
+        <Stack.Screen
+          name="Create"
+          component={CreateScreen}
+          options={{title: 'ライブを作る', ...headerStyle}}
         />
       </Stack.Navigator>
     </NavigationContainer>

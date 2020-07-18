@@ -1,6 +1,7 @@
 import React from 'react';
 import {StyleSheet, FlatList, SafeAreaView} from 'react-native';
 import LiveList from '../components/LiveList';
+import ActionButton from 'react-native-action-button';
 // TODO: 仮のデータをimport
 import data from '../assets/data';
 
@@ -20,6 +21,12 @@ export default ({navigation}) => {
           />
         )}
         keyExtractor={(item, index) => index.toString()}></FlatList>
+      <ActionButton
+        buttonColor="#F57C00"
+        onPress={() => {
+          navigation.navigate('Create');
+        }}
+      />
     </SafeAreaView>
   );
 };

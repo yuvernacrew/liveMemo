@@ -7,7 +7,7 @@ const styles = StyleSheet.create({
   container: {
     width: '100%',
     paddingVertical: 12,
-    paddingHorizontal: 20,
+    paddingHorizontal: 16,
     borderColor: '#607D8B',
     borderBottomWidth: StyleSheet.hairlineWidth,
     flexDirection: 'row',
@@ -17,6 +17,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 20,
     marginBottom: 4,
+    paddingLeft: 4,
   },
   detailContainer: {
     flexDirection: 'row',

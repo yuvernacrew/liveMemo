@@ -1,6 +1,6 @@
 const liveList = [
   {
-    title: 'UVERworld あつめ',
+    title: 'UVERworld げきあつ',
     artist: 'UVERworld',
     date: new Date('2017/11/27 20:30'),
     place: '家',
@@ -13,6 +13,14 @@ const liveList = [
       {
         title: 'ナノ・セカンド',
         comment: 'ばくあげ',
+      },
+      {
+        title: '7th Trigger',
+        comment: 'ちーずのソウルソング',
+      },
+      {
+        title: '境界',
+        comment: '生きる意味なんてあるわけないじゃん、作るしかないじゃん',
       },
       {
         title: 'PRAYING RUN',
