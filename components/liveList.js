@@ -1,6 +1,7 @@
 import React from 'react';
 import {StyleSheet, View, Text, TouchableOpacity} from 'react-native';
 import {MaterialIcons} from '@expo/vector-icons';
+
 import Moment from 'moment';
 
 const styles = StyleSheet.create({
