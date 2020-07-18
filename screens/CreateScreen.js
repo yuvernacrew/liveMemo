@@ -53,11 +53,13 @@ export default function CreateScreen() {
       <TextForm label="場所" />
       <TextForm label="日程" />
       <TextForm label="コメント" />
+      <TextForm label="セットリスト" />
+      <TextForm label="セットリストコメント" />
       <TouchableOpacity
         onPress={() => {
           dispatch(addLive({live: testData}));
         }}>
-        <Text>てすと</Text>
+        <Text>てすとでーた追加</Text>
       </TouchableOpacity>
       <TouchableOpacity
         onPress={() => {
