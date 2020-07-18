@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, View, Text} from 'react-native';
+import {StyleSheet, View, Text, TouchableOpacity} from 'react-native';
 import {MaterialIcons} from '@expo/vector-icons';
 import Moment from 'moment';
 
@@ -16,16 +16,17 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 20,
-    marginBottom: 8,
+    marginBottom: 4,
   },
   detailContainer: {
     flexDirection: 'row',
+    flexWrap: 'wrap',
     borderColor: '#3C3C3C',
   },
   detail: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginRight: 12,
+    marginRight: 8,
   },
   icon: {
     marginRight: 4,
@@ -33,9 +34,9 @@ const styles = StyleSheet.create({
   arrow: {},
 });
 
-const ListItem = ({title, artist, date}) => {
+const ListItem = ({title, artist, date, onPress}) => {
   return (
-    <View style={styles.container}>
+    <TouchableOpacity style={styles.container} onPress={onPress}>
       <View>
         <Text style={styles.title}>{title}</Text>
         <View style={styles.detailContainer}>
@@ -62,7 +63,7 @@ const ListItem = ({title, artist, date}) => {
       <View style={styles.arrow}>
         <MaterialIcons name="chevron-right" size={24} color="gray" />
       </View>
-    </View>
+    </TouchableOpacity>
   );
 };
 
