@@ -5,11 +5,15 @@ import ActionButton from 'react-native-action-button';
 // TODO: 仮のデータをimport
 import data from '../assets/data';
 
+import {useSelector} from 'react-redux';
+
 export default ({navigation}) => {
+  const {lives} = useSelector(state => state.live);
+
   return (
     <SafeAreaView style={styles.container}>
       <FlatList
-        data={data}
+        data={lives}
         renderItem={({item}) => (
           <LiveList
             onPress={() => {
@@ -20,7 +24,8 @@ export default ({navigation}) => {
             date={item.date}
           />
         )}
-        keyExtractor={(item, index) => index.toString()}></FlatList>
+        keyExtractor={(item, index) => index.toString()}
+      />
       <ActionButton
         buttonColor="#F57C00"
         onPress={() => {
