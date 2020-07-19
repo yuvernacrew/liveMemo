@@ -4,9 +4,10 @@ import {
   SafeAreaView,
   Text,
   TouchableOpacity,
-  TextInput,
+  Button,
 } from 'react-native';
 import TextForm from '../components/form/TextForm';
+import DateForm from '../components/form/DateForm';
 /*
  * useDispatch: dispatchを使えるようにする(hooks)
  * useSelector: redux上のstateを取得(hooks)
@@ -59,6 +60,7 @@ export default function CreateScreen() {
     artist: '',
     place: '',
     comment: '',
+    date: new Date(),
   });
 
   return (
@@ -89,6 +91,11 @@ export default function CreateScreen() {
         icon="comment"
         value={liveData.comment}
         setFieldValue={data => changeLiveData({...liveData, comment: data})}
+      />
+
+      <DateForm
+        value={liveData.date}
+        setFieldValue={data => changeLiveData({...liveData, date: data})}
       />
 
       <Text>{JSON.stringify(liveData, null, 2)}</Text>
