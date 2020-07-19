@@ -1,5 +1,11 @@
 import React, {useState} from 'react';
-import {StyleSheet, SafeAreaView, Text, TouchableOpacity} from 'react-native';
+import {
+  StyleSheet,
+  SafeAreaView,
+  Text,
+  TouchableOpacity,
+  TextInput,
+} from 'react-native';
 import TextForm from '../components/form/TextForm';
 /*
  * useDispatch: dispatchを使えるようにする(hooks)
@@ -14,7 +20,6 @@ export default function CreateScreen() {
    */
   const dispatch = useDispatch();
   const lives = useSelector(state => state.live);
-  console.log(lives);
 
   const testData = {
     title: 'UVERworld てすと',
@@ -46,15 +51,52 @@ export default function CreateScreen() {
     ],
   };
 
+  /*
+   * const [state変数, 更新する関数] = userState('初期値')
+   */
+  const [liveData, changeLiveData] = useState({
+    title: '',
+    artist: '',
+    place: '',
+    comment: '',
+  });
+
   return (
     <SafeAreaView style={styles.container}>
-      <TextForm label="ライブタイトル" />
-      <TextForm label="アーティスト" />
-      <TextForm label="場所" />
-      <TextForm label="日程" />
-      <TextForm label="コメント" />
-      <TextForm label="セットリスト" />
-      <TextForm label="セットリストコメント" />
+      <TextForm
+        placeholder="ライブタイトル"
+        icon="music-note"
+        value={liveData.title}
+        setFieldValue={data => changeLiveData({...liveData, title: data})}
+      />
+
+      <TextForm
+        placeholder="アーティスト"
+        icon="person"
+        value={liveData.artist}
+        setFieldValue={data => changeLiveData({...liveData, artist: data})}
+      />
+
+      <TextForm
+        placeholder="場所"
+        icon="place"
+        value={liveData.place}
+        setFieldValue={data => changeLiveData({...liveData, place: data})}
+      />
+
+      <TextForm
+        placeholder="コメント"
+        icon="comment"
+        value={liveData.comment}
+        setFieldValue={data => changeLiveData({...liveData, comment: data})}
+      />
+
+      <Text>{JSON.stringify(liveData, null, 2)}</Text>
+
+      <TouchableOpacity onPress={() => {}}>
+        <Text>ばりゅー更新</Text>
+      </TouchableOpacity>
+
       <TouchableOpacity
         onPress={() => {
           dispatch(addLive({live: testData}));

@@ -2,8 +2,6 @@ import React from 'react';
 import {StyleSheet, FlatList, SafeAreaView} from 'react-native';
 import LiveList from '../components/LiveList';
 import ActionButton from 'react-native-action-button';
-// TODO: 仮のデータをimport
-import data from '../assets/data';
 
 import {useSelector} from 'react-redux';
 

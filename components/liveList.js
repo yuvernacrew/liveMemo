@@ -54,7 +54,7 @@ const ListItem = ({title, artist, date, onPress}) => {
           <View style={styles.detail}>
             <MaterialIcons
               style={styles.icon}
-              name="access-time"
+              name="date-range"
               size={20}
               color="gray"
             />
