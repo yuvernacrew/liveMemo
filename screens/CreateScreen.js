@@ -1,13 +1,9 @@
 import React, {useState} from 'react';
-import {
-  StyleSheet,
-  SafeAreaView,
-  Text,
-  TouchableOpacity,
-  Button,
-} from 'react-native';
+import {StyleSheet, SafeAreaView, Text, TouchableOpacity} from 'react-native';
 import TextForm from '../components/form/TextForm';
 import DateForm from '../components/form/DateForm';
+import ActionButton from 'react-native-action-button';
+import {MaterialIcons} from '@expo/vector-icons';
 /*
  * useDispatch: dispatchを使えるようにする(hooks)
  * useSelector: redux上のstateを取得(hooks)
@@ -15,7 +11,7 @@ import DateForm from '../components/form/DateForm';
 import {useDispatch, useSelector} from 'react-redux';
 import {addLive, deleteAllLives} from '../store/actions/live';
 
-export default function CreateScreen() {
+export default ({navigation}) => {
   /*
    * dispatchの初期化
    */
@@ -116,9 +112,17 @@ export default function CreateScreen() {
         }}>
         <Text>全消し</Text>
       </TouchableOpacity>
+      <ActionButton
+        buttonColor="#F57C00"
+        onPress={() => {
+          dispatch(addLive({live: liveData}));
+          navigation.navigate('Index');
+        }}
+        renderIcon={() => <MaterialIcons name="send" size={20} color="white" />}
+      />
     </SafeAreaView>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {

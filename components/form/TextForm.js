@@ -9,6 +9,7 @@ const TextForm = ({icon, value, placeholder, setFieldValue}) => {
         <MaterialIcons style={styles.icon} name={icon} size={20} color="gray" />
       )}
       <TextInput
+        multiline={true}
         style={styles.input}
         placeholder={placeholder}
         onChangeText={setFieldValue}

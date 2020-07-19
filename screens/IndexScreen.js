@@ -28,8 +28,7 @@ export default ({navigation}) => {
         buttonColor="#F57C00"
         onPress={() => {
           navigation.navigate('Create');
-        }}
-      />
+        }}></ActionButton>
     </SafeAreaView>
   );
 };
