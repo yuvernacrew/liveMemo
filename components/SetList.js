@@ -20,11 +20,15 @@ const styles = StyleSheet.create({
 
 const SetList = ({title, comment, index}) => {
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>
-        {index + 1}. {title}
-      </Text>
-      <Text style={styles.comment}>{comment}</Text>
+    <View>
+      {!!title && (
+        <View style={styles.container}>
+          <Text style={styles.title}>
+            {index + 1}. {title}
+          </Text>
+          <Text style={styles.comment}>{comment}</Text>
+        </View>
+      )}
     </View>
   );
 };

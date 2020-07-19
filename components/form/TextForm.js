@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, TextInput, View, Text} from 'react-native';
+import {StyleSheet, TextInput, View} from 'react-native';
 import {MaterialIcons} from '@expo/vector-icons';
 
 const TextForm = ({icon, value, placeholder, setFieldValue}) => {

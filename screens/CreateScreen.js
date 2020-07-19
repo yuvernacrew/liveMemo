@@ -1,9 +1,20 @@
 import React, {useState} from 'react';
-import {StyleSheet, SafeAreaView, Text, TouchableOpacity} from 'react-native';
-import TextForm from '../components/form/TextForm';
-import DateForm from '../components/form/DateForm';
+import {
+  StyleSheet,
+  SafeAreaView,
+  Text,
+  TouchableOpacity,
+  FlatList,
+  ScrollView,
+  View,
+} from 'react-native';
 import ActionButton from 'react-native-action-button';
 import {MaterialIcons} from '@expo/vector-icons';
+// component
+import TextForm from '../components/form/TextForm';
+import DateForm from '../components/form/DateForm';
+import SetListForm from '../components/form/SetListForm';
+
 /*
  * useDispatch: dispatchを使えるようにする(hooks)
  * useSelector: redux上のstateを取得(hooks)
@@ -18,36 +29,6 @@ export default ({navigation}) => {
   const dispatch = useDispatch();
   const lives = useSelector(state => state.live);
 
-  const testData = {
-    title: 'UVERworld てすと',
-    artist: 'UVERworld',
-    date: new Date('2017/11/27 20:30'),
-    place: '家',
-    comment: 'だいすき',
-    setList: [
-      {
-        title: 'IMPACT',
-        comment: 'ライブハウス鬼あったまる',
-      },
-      {
-        title: 'ナノ・セカンド',
-        comment: 'ばくあげ',
-      },
-      {
-        title: '7th Trigger',
-        comment: 'ちーずのソウルソング',
-      },
-      {
-        title: '境界',
-        comment: '生きる意味なんてあるわけないじゃん、作るしかないじゃん',
-      },
-      {
-        title: 'PRAYING RUN',
-        comment: '泣けるけどげきあつ',
-      },
-    ],
-  };
-
   /*
    * const [state変数, 更新する関数] = userState('初期値')
    */
@@ -57,61 +38,105 @@ export default ({navigation}) => {
     place: '',
     comment: '',
     date: new Date(),
+    setList: [
+      {
+        title: '',
+        comment: '',
+      },
+    ],
   });
+
+  /* セットリストを追加する際のフォーマット整形 */
+  const formattedSetList = (liveData, type, index, value) => {
+    let setListNewArray = liveData.setList;
+    setListNewArray[index][type] = value;
+    return {
+      ...liveData,
+      setList: setListNewArray,
+    };
+  };
 
   return (
     <SafeAreaView style={styles.container}>
-      <TextForm
-        placeholder="ライブタイトル"
-        icon="music-note"
-        value={liveData.title}
-        setFieldValue={data => changeLiveData({...liveData, title: data})}
-      />
+      <ScrollView>
+        <TextForm
+          placeholder="ライブタイトル"
+          icon="music-note"
+          value={liveData.title}
+          setFieldValue={data => changeLiveData({...liveData, title: data})}
+        />
 
-      <TextForm
-        placeholder="アーティスト"
-        icon="person"
-        value={liveData.artist}
-        setFieldValue={data => changeLiveData({...liveData, artist: data})}
-      />
+        <TextForm
+          placeholder="アーティスト"
+          icon="person"
+          value={liveData.artist}
+          setFieldValue={data => changeLiveData({...liveData, artist: data})}
+        />
 
-      <TextForm
-        placeholder="場所"
-        icon="place"
-        value={liveData.place}
-        setFieldValue={data => changeLiveData({...liveData, place: data})}
-      />
+        <TextForm
+          placeholder="場所"
+          icon="place"
+          value={liveData.place}
+          setFieldValue={data => changeLiveData({...liveData, place: data})}
+        />
 
-      <TextForm
-        placeholder="コメント"
-        icon="comment"
-        value={liveData.comment}
-        setFieldValue={data => changeLiveData({...liveData, comment: data})}
-      />
+        <DateForm
+          value={liveData.date}
+          setFieldValue={data => changeLiveData({...liveData, date: data})}
+        />
 
-      <DateForm
-        value={liveData.date}
-        setFieldValue={data => changeLiveData({...liveData, date: data})}
-      />
+        <TextForm
+          placeholder="コメント"
+          icon="comment"
+          value={liveData.comment}
+          setFieldValue={data => changeLiveData({...liveData, comment: data})}
+        />
 
-      <Text>{JSON.stringify(liveData, null, 2)}</Text>
+        <FlatList
+          data={liveData.setList}
+          renderItem={({item, index}) => (
+            <SetListForm
+              value={item}
+              index={index}
+              setFieldValueTitle={data =>
+                changeLiveData(formattedSetList(liveData, 'title', index, data))
+              }
+              setFieldValueComment={data =>
+                changeLiveData(
+                  formattedSetList(liveData, 'comment', index, data),
+                )
+              }
+            />
+          )}
+          keyExtractor={(item, index) => index.toString()}
+        />
 
-      <TouchableOpacity onPress={() => {}}>
-        <Text>ばりゅー更新</Text>
-      </TouchableOpacity>
+        <View style={styles.addSetListBtnContainer}>
+          <TouchableOpacity
+            style={styles.addSetListBtn}
+            onPress={() => {
+              changeLiveData({
+                ...liveData,
+                setList: [
+                  ...liveData.setList,
+                  {
+                    title: '',
+                    comment: '',
+                  },
+                ],
+              });
+            }}>
+            <MaterialIcons
+              style={styles.addSetListBtnIcon}
+              name="playlist-add"
+              size={20}
+              color="gray"
+            />
+            <Text style={styles.addSetListBtnTitle}>セットリスト追加</Text>
+          </TouchableOpacity>
+        </View>
+      </ScrollView>
 
-      <TouchableOpacity
-        onPress={() => {
-          dispatch(addLive({live: testData}));
-        }}>
-        <Text>てすとでーた追加</Text>
-      </TouchableOpacity>
-      <TouchableOpacity
-        onPress={() => {
-          dispatch(deleteAllLives({live: testData}));
-        }}>
-        <Text>全消し</Text>
-      </TouchableOpacity>
       <ActionButton
         buttonColor="#F57C00"
         onPress={() => {
@@ -128,5 +153,23 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: '#fff',
     flex: 1,
+  },
+  addSetListBtnContainer: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    width: '100%',
+    paddingVertical: 20,
+  },
+  addSetListBtn: {
+    width: 200,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    borderColor: '#ddd',
+    borderWidth: 2,
+    borderRadius: 20,
+    paddingVertical: 4,
+  },
+  addSetListBtnIcon: {
+    marginRight: 4,
   },
 });
