@@ -36,42 +36,49 @@ const styles = StyleSheet.create({
 const LiveDetail = ({title, artist, date, place, comment}) => {
   return (
     <View style={styles.container}>
-      <View>
-        <Text style={styles.title}>{title}</Text>
-      </View>
+      <View>{!!title && <Text style={styles.title}>{title}</Text>}</View>
+
       <View style={styles.detailContainer}>
-        <View style={styles.detail}>
-          <MaterialIcons
-            style={styles.icon}
-            name="person"
-            size={20}
-            color="gray"
-          />
-          <Text>{artist}</Text>
+        <View>
+          {!!artist && (
+            <View style={styles.detail}>
+              <MaterialIcons
+                style={styles.icon}
+                name="person"
+                size={20}
+                color="gray"
+              />
+              <Text>{artist}</Text>
+            </View>
+          )}
         </View>
-        <View style={styles.detail}>
-          <MaterialIcons
-            style={styles.icon}
-            name="place"
-            size={20}
-            color="gray"
-          />
-          <Text>{place}</Text>
-        </View>
-        <View style={styles.detail}>
-          <MaterialIcons
-            style={styles.icon}
-            name="date-range"
-            size={20}
-            color="gray"
-          />
-          <Text>{date}</Text>
-        </View>
+
+        {!!place && (
+          <View style={styles.detail}>
+            <MaterialIcons
+              style={styles.icon}
+              name="place"
+              size={20}
+              color="gray"
+            />
+            <Text>{place}</Text>
+          </View>
+        )}
+
+        {!!date && (
+          <View style={styles.detail}>
+            <MaterialIcons
+              style={styles.icon}
+              name="date-range"
+              size={20}
+              color="gray"
+            />
+            <Text>{date}</Text>
+          </View>
+        )}
       </View>
 
-      <View>
-        <Text style={styles.comment}>{comment}</Text>
-      </View>
+      <View>{!!comment && <Text style={styles.comment}>{comment}</Text>}</View>
     </View>
   );
 };
