@@ -12,10 +12,20 @@ export const addLive = ({live}) => {
   };
 };
 
+export const deleteLive = ({live}) => {
+  return {
+    // Type
+    type: 'DELETE_LIVE',
+    // Payload
+    live,
+  };
+};
+
 export const deleteAllLives = ({live}) => {
   return {
     // Type
     type: 'DELETE_ALL_LIVES',
+    // Payload
     live,
   };
 };

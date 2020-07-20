@@ -19,15 +19,14 @@ import SetListForm from '../components/form/SetListForm';
  * useDispatch: dispatchを使えるようにする(hooks)
  * useSelector: redux上のstateを取得(hooks)
  */
-import {useDispatch, useSelector} from 'react-redux';
-import {addLive, deleteAllLives} from '../store/actions/live';
+import {useDispatch} from 'react-redux';
+import {addLive} from '../store/actions/live';
 
 export default ({navigation}) => {
   /*
    * dispatchの初期化
    */
   const dispatch = useDispatch();
-  const lives = useSelector(state => state.live);
 
   /*
    * const [state変数, 更新する関数] = userState('初期値')

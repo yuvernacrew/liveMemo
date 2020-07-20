@@ -7,7 +7,6 @@ const LiveDetail = ({title, artist, date, place, comment}) => {
     <View style={styles.container}>
       <View style={styles.titleContainer}>
         {!!title && <Text style={styles.title}>{title}</Text>}
-        <MaterialIcons name="delete" size={24} color="black" />
       </View>
 
       <View style={styles.detailContainer}>
