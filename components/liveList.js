@@ -42,24 +42,31 @@ const ListItem = ({title, artist, date, onPress}) => {
       <View>
         <Text style={styles.title}>{title}</Text>
         <View style={styles.detailContainer}>
-          <View style={styles.detail}>
-            <MaterialIcons
-              style={styles.icon}
-              name="person"
-              size={20}
-              color="gray"
-            />
-            <Text style={styles.artist}>{artist}</Text>
-          </View>
-          <View style={styles.detail}>
-            <MaterialIcons
-              style={styles.icon}
-              name="access-time"
-              size={20}
-              color="gray"
-            />
-            <Text style={styles.date}>{Moment(date).format('YYYY/MM/DD')}</Text>
-          </View>
+          {!!artist && (
+            <View style={styles.detail}>
+              <MaterialIcons
+                style={styles.icon}
+                name="person"
+                size={20}
+                color="gray"
+              />
+              <Text style={styles.artist}>{artist}</Text>
+            </View>
+          )}
+
+          {!!date && (
+            <View style={styles.detail}>
+              <MaterialIcons
+                style={styles.icon}
+                name="date-range"
+                size={20}
+                color="gray"
+              />
+              <Text style={styles.date}>
+                {Moment(date).format('YYYY/MM/DD')}
+              </Text>
+            </View>
+          )}
         </View>
       </View>
       <View style={styles.arrow}>
