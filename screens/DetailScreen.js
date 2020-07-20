@@ -1,13 +1,32 @@
 import React from 'react';
-import {StyleSheet, FlatList, SafeAreaView, Text} from 'react-native';
+import {
+  StyleSheet,
+  FlatList,
+  SafeAreaView,
+  TouchableOpacity,
+} from 'react-native';
 import Moment from 'moment';
 import SetList from '../components/SetList';
 import LiveDetail from '../components/LiveDetail';
+import {MaterialIcons} from '@expo/vector-icons';
 
-export default ({route}) => {
+import {useDispatch} from 'react-redux';
+import {deleteLive} from '../store/actions/live';
+
+export default ({route, navigation}) => {
   const {data} = route.params;
+  const dispatch = useDispatch();
   return (
     <SafeAreaView style={styles.container}>
+      {/* TODO: いつかcomponent化、移行 */}
+      <TouchableOpacity
+        onPress={() => {
+          dispatch(deleteLive({live: data}));
+          navigation.navigate('Index');
+        }}
+        style={styles.deleteBtn}>
+        <MaterialIcons name="delete" size={24} color="black" />
+      </TouchableOpacity>
       <LiveDetail
         title={data.title}
         artist={data.artist}
@@ -30,5 +49,14 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: '#fff',
     flex: 1,
+    position: 'relative',
+  },
+  deleteBtn: {
+    position: 'absolute',
+    width: 24,
+    height: 24,
+    right: 10,
+    top: 10,
+    zIndex: 1000,
   },
 });
