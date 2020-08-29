@@ -1,0 +1,15 @@
+# この階層配下にeditorconfigを適用
+root = true
+
+[*]
+indent_style = space
+indent_size = 2
+end_of_line = lf
+charset = utf-8
+# 行末の空白を削除するか
+trim_trailing_whitespace = true
+# 最終行に空行を入れるか
+insert_final_newline = true
+
+[*.md]
+trim_trailing_whitespace = false
