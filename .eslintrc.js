@@ -9,10 +9,6 @@ module.exports = {
   parserOptions: {
     parser: 'babel-eslint',
   },
-  rules: {
-    // console出力許可
-    'no-console': ['error', { allow: ['error'] }],
-  },
   extends: [
     'airbnb-base',
     'eslint:recommended',
@@ -21,6 +17,8 @@ module.exports = {
     'prettier/react',
   ],
   rules: {
+    // console出力許可
+    'no-console': ['error', { allow: ['error'] }],
     'prettier/prettier': 'error',
   },
 };

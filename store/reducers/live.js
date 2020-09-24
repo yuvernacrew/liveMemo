@@ -19,7 +19,7 @@ const reducer = (state = initState, action) => {
         lives: [...state.lives, action.live],
       };
     case 'DELETE_LIVE':
-      const newLiveArray = state.lives.filter(item => {
+      const newLiveArray = state.lives.filter((item) => {
         return item.title != action.live.title;
       });
       return {

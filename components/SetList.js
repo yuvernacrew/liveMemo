@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, View, Text} from 'react-native';
+import { StyleSheet, View, Text } from 'react-native';
 
 const styles = StyleSheet.create({
   container: {
@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const SetList = ({title, comment, index}) => {
+const SetList = ({ title, comment, index }) => {
   return (
     <View>
       {!!title && (

@@ -3,7 +3,7 @@
  * Type: actionの種類を識別するための文字列
  * Payload: actionを実行する際に使う任意のデータ
  */
-export const addLive = ({live}) => {
+export const addLive = ({ live }) => {
   return {
     // Type
     type: 'ADD_LIVE',
@@ -12,7 +12,7 @@ export const addLive = ({live}) => {
   };
 };
 
-export const deleteLive = ({live}) => {
+export const deleteLive = ({ live }) => {
   return {
     // Type
     type: 'DELETE_LIVE',
@@ -21,7 +21,7 @@ export const deleteLive = ({live}) => {
   };
 };
 
-export const deleteAllLives = ({live}) => {
+export const deleteAllLives = ({ live }) => {
   return {
     // Type
     type: 'DELETE_ALL_LIVES',

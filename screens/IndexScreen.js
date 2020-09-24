@@ -1,21 +1,27 @@
 import React from 'react';
-import {StyleSheet, FlatList, SafeAreaView} from 'react-native';
-import LiveList from '../components/LiveList';
+import { StyleSheet, FlatList, SafeAreaView } from 'react-native';
 import ActionButton from 'react-native-action-button';
 
-import {useSelector} from 'react-redux';
+import { useSelector } from 'react-redux';
+import LiveList from '../components/LiveList';
 
-export default ({navigation}) => {
-  const {lives} = useSelector(state => state.live);
+const styles = StyleSheet.create({
+  container: {
+    backgroundColor: '#fff',
+    flex: 1,
+  },
+});
 
+export default ({ navigation }) => {
+  const { lives } = useSelector((state) => state.live);
   return (
     <SafeAreaView style={styles.container}>
       <FlatList
         data={lives}
-        renderItem={({item}) => (
+        renderItem={({ item }) => (
           <LiveList
             onPress={() => {
-              navigation.navigate('Detail', {data: item});
+              navigation.navigate('Detail', { data: item });
             }}
             title={item.title}
             artist={item.artist}
@@ -28,14 +34,8 @@ export default ({navigation}) => {
         buttonColor="#F57C00"
         onPress={() => {
           navigation.navigate('Create');
-        }}></ActionButton>
+        }}
+      ></ActionButton>
     </SafeAreaView>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    backgroundColor: '#fff',
-    flex: 1,
-  },
-});

@@ -2,17 +2,17 @@
  * combineReducers: storeのツリー構造の作成(初期化)
  * createStore:
  */
-import {combineReducers, createStore} from 'redux';
-import liveReducer from './reducers/live';
+import { combineReducers, createStore } from 'redux';
 
 /*
  * persistReducer: 永続化Reducer
  * persistStore: 永続化State
  *  AsyncStorage: 永続化Stateを保管する場所
  */
-import {persistReducer, persistStore} from 'redux-persist';
-import {AsyncStorage} from 'react-native';
-import {composeWithDevTools} from 'redux-devtools-extension';
+import { persistReducer, persistStore } from 'redux-persist';
+import { AsyncStorage } from 'react-native';
+import { composeWithDevTools } from 'redux-devtools-extension';
+import liveReducer from './reducers/live';
 
 const persistConfig = {
   key: 'root',

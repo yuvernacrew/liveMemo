@@ -1,23 +1,6 @@
 import React from 'react';
-import {StyleSheet, TextInput, View} from 'react-native';
-import {MaterialIcons} from '@expo/vector-icons';
-
-const TextForm = ({icon, value, placeholder, setFieldValue}) => {
-  return (
-    <View style={styles.container}>
-      {icon && (
-        <MaterialIcons style={styles.icon} name={icon} size={20} color="gray" />
-      )}
-      <TextInput
-        multiline={true}
-        style={styles.input}
-        placeholder={placeholder}
-        onChangeText={setFieldValue}
-        value={value}
-      />
-    </View>
-  );
-};
+import { StyleSheet, TextInput, View } from 'react-native';
+import { MaterialIcons } from '@expo/vector-icons';
 
 const styles = StyleSheet.create({
   container: {
@@ -37,5 +20,22 @@ const styles = StyleSheet.create({
     marginRight: 12,
   },
 });
+
+const TextForm = ({ icon, value, placeholder, setFieldValue }) => {
+  return (
+    <View style={styles.container}>
+      {icon && (
+        <MaterialIcons style={styles.icon} name={icon} size={20} color="gray" />
+      )}
+      <TextInput
+        multiline={true}
+        style={styles.input}
+        placeholder={placeholder}
+        onChangeText={setFieldValue}
+        value={value}
+      />
+    </View>
+  );
+};
 
 export default TextForm;

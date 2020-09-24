@@ -1,48 +1,8 @@
-import React, {useState} from 'react';
-import {StyleSheet, TouchableOpacity, View, Text} from 'react-native';
-import {MaterialIcons} from '@expo/vector-icons';
+import React, { useState } from 'react';
+import { StyleSheet, TouchableOpacity, View, Text } from 'react-native';
+import { MaterialIcons } from '@expo/vector-icons';
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
 import Moment from 'moment';
-
-const DateForm = ({setFieldValue, value}) => {
-  /*
-   * datapicker用 モーダル
-   */
-  const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
-
-  const showDatePicker = () => {
-    setDatePickerVisibility(true);
-  };
-
-  const hideDatePicker = () => {
-    setDatePickerVisibility(false);
-  };
-
-  const handleConfirm = date => {
-    setFieldValue(date);
-    hideDatePicker();
-  };
-
-  return (
-    <View style={styles.container}>
-      <MaterialIcons
-        style={styles.icon}
-        name="date-range"
-        size={20}
-        color="gray"
-      />
-      <TouchableOpacity onPress={showDatePicker} style={styles.text}>
-        <Text>{Moment(value).format('YYYY/MM/DD')}</Text>
-      </TouchableOpacity>
-      <DateTimePickerModal
-        isVisible={isDatePickerVisible}
-        mode="date"
-        onConfirm={handleConfirm}
-        onCancel={hideDatePicker}
-      />
-    </View>
-  );
-};
 
 const styles = StyleSheet.create({
   container: {
@@ -67,5 +27,45 @@ const styles = StyleSheet.create({
     marginRight: 12,
   },
 });
+
+const DateForm = ({ setFieldValue, value }) => {
+  /*
+   * datapicker用 モーダル
+   */
+  const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
+
+  const showDatePicker = () => {
+    setDatePickerVisibility(true);
+  };
+
+  const hideDatePicker = () => {
+    setDatePickerVisibility(false);
+  };
+
+  const handleConfirm = (date) => {
+    setFieldValue(date);
+    hideDatePicker();
+  };
+
+  return (
+    <View style={styles.container}>
+      <MaterialIcons
+        style={styles.icon}
+        name="date-range"
+        size={20}
+        color="gray"
+      />
+      <TouchableOpacity onPress={showDatePicker} style={styles.text}>
+        <Text>{Moment(value).format('YYYY/MM/DD')}</Text>
+      </TouchableOpacity>
+      <DateTimePickerModal
+        isVisible={isDatePickerVisible}
+        mode="date"
+        onConfirm={handleConfirm}
+        onCancel={hideDatePicker}
+      />
+    </View>
+  );
+};
 
 export default DateForm;
