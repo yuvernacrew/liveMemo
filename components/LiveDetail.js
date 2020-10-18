@@ -1,8 +1,44 @@
 import React from 'react';
-import {StyleSheet, View, Text} from 'react-native';
-import {MaterialIcons} from '@expo/vector-icons';
+import { StyleSheet, View, Text } from 'react-native';
+import { MaterialIcons } from '@expo/vector-icons';
 
-const LiveDetail = ({title, artist, date, place, comment}) => {
+const styles = StyleSheet.create({
+  container: {
+    width: '100%',
+    paddingVertical: 12,
+    paddingHorizontal: 10,
+    borderColor: '#3C3C3C',
+    borderBottomWidth: StyleSheet.hairlineWidth * 2,
+    backgroundColor: '#fbfbfb',
+  },
+  titleContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  title: {
+    paddingLeft: 4,
+    fontSize: 24,
+    marginBottom: 12,
+  },
+  icon: {
+    marginRight: 4,
+  },
+  detail: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginRight: 8,
+    fontSize: 16,
+  },
+  detailContainer: {
+    marginBottom: 20,
+  },
+  comment: {
+    color: '#333',
+  },
+});
+
+const LiveDetail = ({ title, artist, date, place, comment }) => {
   return (
     <View style={styles.container}>
       <View style={styles.titleContainer}>
@@ -53,41 +89,5 @@ const LiveDetail = ({title, artist, date, place, comment}) => {
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    width: '100%',
-    paddingVertical: 12,
-    paddingHorizontal: 10,
-    borderColor: '#3C3C3C',
-    borderBottomWidth: StyleSheet.hairlineWidth * 2,
-    backgroundColor: '#fbfbfb',
-  },
-  titleContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-  },
-  title: {
-    paddingLeft: 4,
-    fontSize: 24,
-    marginBottom: 12,
-  },
-  icon: {
-    marginRight: 4,
-  },
-  detail: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginRight: 8,
-    fontSize: 16,
-  },
-  detailContainer: {
-    marginBottom: 20,
-  },
-  comment: {
-    color: '#333',
-  },
-});
 
 export default LiveDetail;

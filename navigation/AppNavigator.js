@@ -1,6 +1,6 @@
 import React from 'react';
-import {NavigationContainer} from '@react-navigation/native';
-import {createStackNavigator} from '@react-navigation/stack';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 /* screens */
 import IndexScreen from '../screens/IndexScreen';
 import DetailScreen from '../screens/DetailScreen';
@@ -18,26 +18,28 @@ const headerStyle = {
   },
 };
 
-export default AppNavigaotor = () => {
+const AppNavigaotor = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen
           name="Index"
           component={IndexScreen}
-          options={{title: 'ライブ一覧', ...headerStyle}}
+          options={{ title: 'ライブ一覧', ...headerStyle }}
         />
         <Stack.Screen
           name="Detail"
           component={DetailScreen}
-          options={{title: 'ライブ詳細', ...headerStyle}}
+          options={{ title: 'ライブ詳細', ...headerStyle }}
         />
         <Stack.Screen
           name="Create"
           component={CreateScreen}
-          options={{title: 'ライブを作る', ...headerStyle}}
+          options={{ title: 'ライブを作る', ...headerStyle }}
         />
       </Stack.Navigator>
     </NavigationContainer>
   );
 };
+
+export default AppNavigaotor;

@@ -1,6 +1,6 @@
 import React from 'react';
-import {StyleSheet, View, Text, TouchableOpacity} from 'react-native';
-import {MaterialIcons} from '@expo/vector-icons';
+import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
+import { MaterialIcons } from '@expo/vector-icons';
 
 import Moment from 'moment';
 
@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
   arrow: {},
 });
 
-const ListItem = ({title, artist, date, onPress}) => {
+const ListItem = ({ title, artist, date, onPress }) => {
   return (
     <TouchableOpacity style={styles.container} onPress={onPress}>
       <View>

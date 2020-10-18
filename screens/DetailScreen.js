@@ -6,25 +6,26 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import Moment from 'moment';
+import { MaterialIcons } from '@expo/vector-icons';
+import { useDispatch } from 'react-redux';
 import SetList from '../components/SetList';
 import LiveDetail from '../components/LiveDetail';
-import {MaterialIcons} from '@expo/vector-icons';
 
-import {useDispatch} from 'react-redux';
-import {deleteLive} from '../store/actions/live';
+import { deleteLive } from '../store/actions/live';
 
-export default ({route, navigation}) => {
-  const {data} = route.params;
+export default ({ route, navigation }) => {
+  const { data } = route.params;
   const dispatch = useDispatch();
   return (
     <SafeAreaView style={styles.container}>
       {/* TODO: いつかcomponent化、移行 */}
       <TouchableOpacity
         onPress={() => {
-          dispatch(deleteLive({live: data}));
+          dispatch(deleteLive({ live: data }));
           navigation.navigate('Index');
         }}
-        style={styles.deleteBtn}>
+        style={styles.deleteBtn}
+      >
         <MaterialIcons name="delete" size={24} color="black" />
       </TouchableOpacity>
       <LiveDetail
@@ -36,7 +37,7 @@ export default ({route, navigation}) => {
       />
       <FlatList
         data={data.setList}
-        renderItem={({item, index}) => (
+        renderItem={({ item, index }) => (
           <SetList title={item.title} comment={item.comment} index={index} />
         )}
         keyExtractor={(item, index) => index.toString()}
